@@ -1,72 +1,107 @@
-LucianTaskManager API
 
-Project Purpose
-LucianTaskManager is a simple yet scalable REST API built with .NET 8, designed to manage personal tasks with secure authentication.
-It features user registration, login with JWT authentication, task CRUD operations, and admin-level management endpoints.
+# LucianTaskManager API
 
-Perfect as a freelance portfolio project to showcase backend development and API architecture skills.
+---
 
-Technologies Used
+## Project Purpose
+
+LucianTaskManager is a simple yet scalable REST API built with .NET 8, designed to manage personal tasks with secure authentication.  
+It features:
+
+- User registration and login with JWT authentication
+- Role-based access control (User and Admin)
+- Task CRUD operations
+- Admin-level management endpoints
+
+Perfect for showcasing backend development and API architecture skills in freelance portfolios.
+
+---
+
+## Technologies Used
+
 - .NET 8 Web API
 - Entity Framework Core
 - PostgreSQL
-- JWT Authentication (with Role-based Access Control)
+- JWT Authentication (Role-Based)
 - Swagger / OpenAPI
-- Docker (optional for database)
+- Docker (optional, for database)
 
-Getting Started
+---
 
-Prerequisites
-- .NET 8 SDK
-- PostgreSQL database
+## Getting Started
 
-Setup
-Clone the repository:
-git clone https://github.com/your-username/LucianTaskManager.git
-cd LucianTaskManager
+### Prerequisites
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [PostgreSQL](https://www.postgresql.org/)
 
+---
 
-Configure appsettings.json:
-"ConnectionStrings": {
-  "DefaultConnection": "Host=localhost;Port=5432;Database=LucianTaskDb;Username=postgres;Password=yourpassword"
-},
-"Jwt": {
-  "Key": "YourSuperSecretKeyHereAtLeast32Chars",
-  "Issuer": "LucianTaskManager",
-  "Audience": "LucianTaskManagerUsers"
-}
+### Setup
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/LucianTaskManager.git
+   cd LucianTaskManager
+   ```
 
-Apply database migrations:
-dotnet ef database update
+2. Configure `appsettings.json`:
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Host=localhost;Port=5432;Database=LucianTaskDb;Username=postgres;Password=yourpassword"
+     },
+     "Jwt": {
+       "Key": "YourSuperSecretKeyHereAtLeast32Chars",
+       "Issuer": "LucianTaskManager",
+       "Audience": "LucianTaskManagerUsers"
+     }
+   }
+   ```
 
+3. Apply database migrations:
+   ```bash
+   dotnet ef database update
+   ```
 
-Run the application:
-dotnet run
+4. Run the application:
+   ```bash
+   dotnet run
+   ```
 
-Access Swagger UI:
-https://localhost:5001/swagger/index.html
+5. Access Swagger UI:
+   ```
+   https://localhost:5001/swagger/index.html
+   ```
 
+---
 
-API Endpoints
+## API Endpoints
 
-Authentication
-POST /auth/register → Register a new user
-POST /auth/login → Login and receive a JWT token
+### Authentication
+- POST `/auth/register` → Register a new user
+- POST `/auth/login` → Login and receive a JWT token
 
+### User Task Management
+- GET `/tasks` → List user's own tasks
+- POST `/tasks` → Create a new task
+- PUT `/tasks/{id}` → Update a user's own task
+- DELETE `/tasks/{id}` → Delete a user's own task
 
-User Task Management
-GET /tasks → List user's own tasks
-POST /tasks → Create a new task
-PUT /tasks/{id} → Update a user's own task
-DELETE /tasks/{id} → Delete a user's own task
+### Admin Management
+- GET `/admin/users` → List all users
+- GET `/admin/tasks` → List all tasks across all users
 
-Admin Management
-GET /admin/users → List all users
-GET /admin/tasks → List all tasks across all users
+---
 
+## Deployment Notes
 
-Deployment Notes
-The application can be containerized using Docker for production.
+- Docker can be used to containerize the database and application for production environments.
+- Important: Use environment variables for sensitive data like database credentials and JWT secret keys in production.
 
-Environment variables should be used for sensitive settings (connection strings, JWT keys).
+---
+
+## Status
+
+Ready to deploy and showcase as a freelance portfolio project.
+
+---
