@@ -66,7 +66,7 @@ GET /admin/users → List all users
 GET /admin/tasks → List all tasks across all users
 
 
-📦 Deployment Notes
+Deployment Notes
 The application can be containerized using Docker for production.
 
 Environment variables should be used for sensitive settings (connection strings, JWT keys).
