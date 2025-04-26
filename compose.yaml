@@ -1,0 +1,17 @@
+﻿version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: lucian_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: luci123
+      POSTGRES_DB: LucianTaskDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

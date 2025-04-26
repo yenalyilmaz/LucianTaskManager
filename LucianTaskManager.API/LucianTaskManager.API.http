@@ -1,0 +1,6 @@
+@LucianTaskManager.API_HostAddress = http://localhost:5191
+
+GET {{LucianTaskManager.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
